@@ -774,3 +774,102 @@ footer {
     display: none;
   }
 }
+
+
+/* ===== AJUSTE RESPONSIVE DEFINITIVO DEL LOGO Y HEADER ===== */
+
+/* Escritorio */
+.site-header {
+  min-height: 78px;
+  height: 78px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.brand-logo {
+  display: block;
+  width: auto;
+  max-width: 120px;
+  max-height: 54px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+
+/* Pantallas medianas / tablet */
+@media (max-width: 1180px) {
+  .site-header {
+    padding-inline: 24px;
+    gap: 20px;
+  }
+
+  .brand-logo {
+    max-width: 108px;
+    max-height: 50px;
+  }
+}
+
+
+/* Tablet */
+@media (max-width: 980px) {
+  .site-header {
+    height: 74px;
+    min-height: 74px;
+  }
+
+  .brand-logo {
+    max-width: 102px;
+    max-height: 46px;
+  }
+
+  .main-nav {
+    top: 74px;
+  }
+}
+
+
+/* Móvil */
+@media (max-width: 640px) {
+  .site-header {
+    height: 68px;
+    min-height: 68px;
+    padding-inline: 16px;
+  }
+
+  .brand {
+    height: 68px;
+  }
+
+  .brand-logo {
+    width: auto;
+    max-width: 92px;
+    max-height: 42px;
+  }
+
+  .main-nav {
+    top: 68px;
+  }
+
+  .menu-toggle {
+    align-self: center;
+  }
+}
+
+
+/* Móviles muy pequeños */
+@media (max-width: 380px) {
+  .brand-logo {
+    max-width: 84px;
+    max-height: 38px;
+  }
+
+  .site-header {
+    padding-inline: 14px;
+  }
+}
