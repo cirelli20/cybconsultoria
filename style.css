@@ -371,41 +371,6 @@ button {
 }
 
 
-/* CÓMO TRABAJAMOS */
-
-.how {
-  background: var(--soft);
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 38px;
-}
-
-.step {
-  padding-top: 22px;
-  border-top: 1px solid var(--ink);
-}
-
-.step > span {
-  color: var(--brown);
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.step h3 {
-  margin: 28px 0 8px;
-  font-size: 25px;
-}
-
-.step p {
-  margin: 0;
-  max-width: 330px;
-  color: var(--muted);
-}
-
-
 /* NOSOTROS */
 
 .about-grid {
@@ -421,7 +386,9 @@ button {
 }
 
 .about-image {
-  aspect-ratio: 4 / 3;
+  width: min(100%, 440px);
+  aspect-ratio: 3 / 4;
+  justify-self: center;
   overflow: hidden;
   border-radius: 14px;
 }
@@ -430,6 +397,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
 
@@ -871,5 +839,384 @@ footer {
 
   .site-header {
     padding-inline: 14px;
+  }
+}
+
+/* ===== PLANES ADICIONALES ===== */
+.plans-expand-wrap {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.plans-toggle {
+  cursor: pointer;
+  background: transparent;
+}
+
+.extra-plans {
+  margin-top: 28px;
+}
+
+.extra-plans[hidden] {
+  display: none;
+}
+
+/* ===== PERFIL DEL CONTADOR ===== */
+.owner-profile {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.owner-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--brown);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+
+/* ===== SERVICIOS PARTICULARES ===== */
+.individual-services {
+  background: var(--soft);
+}
+
+.individual-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.individual-service-card {
+  min-height: 520px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--white);
+}
+
+.individual-service-card--featured {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.service-kicker {
+  color: var(--brown);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.individual-service-card--featured .service-kicker {
+  color: var(--ivory);
+}
+
+.individual-service-card h3 {
+  margin: 10px 0 20px;
+  font-size: 30px;
+  letter-spacing: -.04em;
+}
+
+.individual-service-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+.individual-service-card li {
+  position: relative;
+  padding: 11px 0 11px 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.individual-service-card--featured li {
+  border-color: rgba(255,255,255,.12);
+}
+
+.individual-service-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  font-weight: 800;
+}
+
+.individual-price {
+  margin-top: auto;
+  padding: 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+  border-top: 1px solid var(--line);
+}
+
+.individual-service-card--featured .individual-price {
+  border-color: rgba(255,255,255,.15);
+}
+
+.individual-price small {
+  width: 100%;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.individual-service-card--featured .individual-price small,
+.individual-service-card--featured .individual-price span {
+  color: rgba(255,255,255,.62);
+}
+
+.individual-price strong {
+  font-size: 42px;
+  line-height: 1;
+  letter-spacing: -.05em;
+}
+
+.individual-price span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.rent-prices {
+  margin-top: auto;
+  padding: 18px 0 10px;
+  border-top: 1px solid var(--line);
+}
+
+.rent-prices p {
+  margin: 0;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.rent-prices span {
+  color: var(--muted);
+}
+
+.one-time-note {
+  margin: 10px 0 22px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.individual-service-card .btn {
+  margin-top: 0;
+}
+
+.individual-services-note {
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 980px) {
+  .individual-services-grid {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+    margin-inline: auto;
+  }
+
+  .individual-service-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .individual-service-card {
+    padding: 24px;
+  }
+
+  .rent-prices p {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+.whatsapp-header {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--ink);
+  border-radius: 6px;
+
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.whatsapp-header:hover {
+  transform: translateY(-2px);
+  opacity: .85;
+}
+
+.whatsapp-header img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* ===== AJUSTES FINALES RESPONSIVE ===== */
+
+/* Mantiene "Nos preocupamos por" en una sola línea */
+.hero-main-line {
+  display: block;
+  white-space: nowrap;
+}
+
+/* Servicios particulares más compactos en escritorio */
+.individual-services-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.individual-service-card {
+  min-height: 430px;
+  padding: 24px;
+}
+
+.individual-service-card h3 {
+  margin: 8px 0 16px;
+  font-size: 26px;
+}
+
+.individual-service-card li {
+  padding: 8px 0 8px 22px;
+  font-size: 14px;
+}
+
+.individual-price {
+  padding: 18px 0;
+}
+
+.individual-price strong {
+  font-size: 34px;
+}
+
+.rent-prices {
+  padding-top: 14px;
+}
+
+.rent-prices p {
+  padding: 8px 0;
+  gap: 12px;
+  font-size: 14px;
+}
+
+/* Pantallas medianas */
+@media (max-width: 1180px) {
+  .hero h1 {
+    font-size: clamp(48px, 6.2vw, 76px);
+  }
+
+  .individual-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Tablet */
+@media (max-width: 980px) {
+  .hero h1 {
+    font-size: clamp(42px, 7vw, 64px);
+  }
+
+  .individual-service-card {
+    min-height: auto;
+  }
+
+  .footer-links {
+    gap: 14px;
+  }
+}
+
+/* Móvil */
+@media (max-width: 640px) {
+  .hero {
+    min-height: 520px;
+  }
+
+  .hero h1 {
+    font-size: clamp(29px, 9vw, 52px);
+    line-height: 1;
+    letter-spacing: -.055em;
+  }
+
+  .hero-main-line {
+    white-space: nowrap;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .individual-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .individual-service-card {
+    padding: 20px;
+  }
+
+  .individual-service-card h3 {
+    font-size: 24px;
+  }
+
+  .individual-service-card li {
+    font-size: 14px;
+  }
+
+  .individual-price strong {
+    font-size: 32px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 27px;
+  }
+
+  .container {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .plans-toggle {
+    width: auto;
+  }
+}
+
+
+/* ===== RETRATO QUIÉNES SOMOS ===== */
+@media (max-width: 980px) {
+  .about-image {
+    width: min(100%, 420px);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-image {
+    width: min(100%, 340px);
   }
 }

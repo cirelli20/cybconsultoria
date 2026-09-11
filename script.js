@@ -23,3 +23,24 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+const plansToggle = document.querySelector(".plans-toggle");
+const extraPlans = document.querySelector("#planes-extra");
+
+plansToggle?.addEventListener("click", () => {
+  const isHidden = extraPlans?.hasAttribute("hidden");
+
+  if (isHidden) {
+    extraPlans.removeAttribute("hidden");
+    plansToggle.textContent = "Ver menos planes";
+    plansToggle.setAttribute("aria-expanded", "true");
+
+    extraPlans.querySelectorAll(".reveal").forEach(el => {
+      el.classList.add("is-visible");
+    });
+  } else {
+    extraPlans?.setAttribute("hidden", "");
+    plansToggle.textContent = "Ver más planes";
+    plansToggle.setAttribute("aria-expanded", "false");
+  }
+});
