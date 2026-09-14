@@ -1220,3 +1220,94 @@ footer {
     width: min(100%, 340px);
   }
 }
+
+
+/* ===== EXPERIENCIAS / TESTIMONIOS ===== */
+.experiences {
+  background: var(--ink-dark);
+  color: var(--white);
+}
+
+.experiences .section-heading {
+  margin-bottom: 42px;
+}
+
+.experiences .section-heading h2 {
+  color: var(--white);
+}
+
+.experiences .section-heading p {
+  color: rgba(255,255,255,.68);
+}
+
+.experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.experience-card {
+  min-height: 290px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  background: rgba(255,255,255,.055);
+}
+
+.experience-quote {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ivory);
+  font-size: 58px;
+  font-weight: 800;
+  line-height: .8;
+}
+
+.experience-card > p {
+  margin: 12px 0 30px;
+  color: rgba(255,255,255,.82);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.experience-author {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.experience-author strong,
+.experience-author span {
+  display: block;
+}
+
+.experience-author strong {
+  color: var(--white);
+  font-size: 15px;
+}
+
+.experience-author span {
+  margin-top: 3px;
+  color: rgba(255,255,255,.55);
+  font-size: 13px;
+}
+
+@media (max-width: 980px) {
+  .experiences-grid {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .experience-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .experience-card {
+    padding: 24px;
+  }
+}
