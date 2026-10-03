@@ -1222,14 +1222,15 @@ footer {
 }
 
 
-/* ===== EXPERIENCIAS / TESTIMONIOS ===== */
+/* ===== EXPERIENCIAS / TESTIMONIOS EN GALERÍA ===== */
 .experiences {
   background: var(--ink-dark);
   color: var(--white);
+  overflow: hidden;
 }
 
 .experiences .section-heading {
-  margin-bottom: 42px;
+  margin-bottom: 34px;
 }
 
 .experiences .section-heading h2 {
@@ -1240,74 +1241,218 @@ footer {
   color: rgba(255,255,255,.68);
 }
 
-.experiences-grid {
+.testimonials-gallery {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: 46px minmax(0, 1fr) 46px;
+  align-items: center;
+  gap: 14px;
 }
 
-.experience-card {
-  min-height: 290px;
-  padding: 30px;
+.testimonials-viewport {
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.testimonials-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonials-track {
   display: flex;
-  flex-direction: column;
-  border: 1px solid rgba(255,255,255,.12);
+  gap: 18px;
+  width: max-content;
+  padding: 4px 2px 12px;
+}
+
+.testimonial-slide {
+  position: relative;
+  flex: 0 0 clamp(255px, 31vw, 380px);
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  scroll-snap-align: start;
+  border: 1px solid rgba(255,255,255,.14);
   border-radius: 14px;
-  background: rgba(255,255,255,.055);
+  background: rgba(255,255,255,.06);
 }
 
-.experience-quote {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--ivory);
-  font-size: 58px;
-  font-weight: 800;
-  line-height: .8;
+.testimonial-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.experience-card > p {
-  margin: 12px 0 30px;
-  color: rgba(255,255,255,.82);
-  font-size: 16px;
-  line-height: 1.65;
+.testimonial-placeholder {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 28px;
+  color: rgba(255,255,255,.62);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: .04em;
+  border: 1px dashed rgba(255,255,255,.20);
 }
 
-.experience-author {
-  margin-top: auto;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255,255,255,.12);
+.testimonial-slide.is-missing .testimonial-placeholder {
+  display: grid;
 }
 
-.experience-author strong,
-.experience-author span {
-  display: block;
+.testimonial-slide.is-missing img {
+  display: none;
 }
 
-.experience-author strong {
+.gallery-arrow {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 46px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
   color: var(--white);
-  font-size: 15px;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
 }
 
-.experience-author span {
-  margin-top: 3px;
-  color: rgba(255,255,255,.55);
-  font-size: 13px;
+.gallery-arrow:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.12);
+}
+
+.gallery-arrow span {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.gallery-help {
+  margin: 16px 0 0;
+  color: rgba(255,255,255,.50);
+  font-size: 12px;
+  text-align: center;
 }
 
 @media (max-width: 980px) {
-  .experiences-grid {
-    grid-template-columns: 1fr;
-    max-width: 720px;
-    margin-inline: auto;
+  .testimonials-gallery {
+    grid-template-columns: 40px minmax(0, 1fr) 40px;
+    gap: 10px;
   }
 
-  .experience-card {
-    min-height: auto;
+  .gallery-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .testimonial-slide {
+    flex-basis: clamp(245px, 62vw, 360px);
   }
 }
 
 @media (max-width: 640px) {
-  .experience-card {
-    padding: 24px;
+  .experiences .section-heading {
+    margin-bottom: 26px;
+  }
+
+  .testimonials-gallery {
+    display: block;
+  }
+
+  .gallery-arrow {
+    display: none;
+  }
+
+  .testimonials-viewport {
+    width: calc(100% + 18px);
+    padding-right: 18px;
+    scroll-snap-type: x proximity;
+  }
+
+  .testimonials-track {
+    gap: 12px;
+  }
+
+  .testimonial-slide {
+    flex-basis: min(82vw, 320px);
+  }
+
+  .gallery-help {
+    text-align: left;
+  }
+}
+
+
+/* ===== NAVEGACIÓN POR SECCIONES / SCROLL SNAP ===== */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 78px;
+}
+
+.hero,
+main > .section,
+footer {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.hero,
+main > .section {
+  min-height: calc(100svh - 78px);
+}
+
+/* Mantiene los títulos de cada sección visibles bajo el header fijo */
+main > .section,
+.hero {
+  scroll-margin-top: 78px;
+}
+
+/* Precio sin valor definido */
+.individual-price--quote strong {
+  font-size: 30px;
+  letter-spacing: -.04em;
+}
+
+@media (max-width: 980px) {
+  html {
+    scroll-padding-top: 74px;
+  }
+
+  .hero,
+  main > .section {
+    min-height: calc(100svh - 74px);
+    scroll-margin-top: 74px;
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+    /* En celular el ajuste es más suave: se acerca a la sección, pero no obliga el salto. */
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 68px;
+  }
+
+  .hero,
+  main > .section,
+  footer {
+    scroll-snap-stop: normal;
+  }
+
+  .hero,
+  main > .section {
+    min-height: calc(100svh - 68px);
+    scroll-margin-top: 68px;
+  }
+
+  .individual-price--quote strong {
+    font-size: 28px;
   }
 }
