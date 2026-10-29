@@ -1,6 +1,13 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".main-nav");
 
+// El logo siempre devuelve al inicio, incluso si el enlace #inicio ya está activo.
+document.querySelector(".brand")?.addEventListener("click", event => {
+  event.preventDefault();
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+});
+
 menuToggle?.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
