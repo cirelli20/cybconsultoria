@@ -479,7 +479,7 @@ footer {
 }
 
 .footer-logo {
-  width: 145px;
+  width: 175px;
 }
 
 .footer-inner p {
@@ -762,10 +762,10 @@ footer {
 
 .brand-logo {
   display: block;
-  width: auto;
-  max-width: 120px;
-  max-height: 54px;
-  object-fit: contain;
+  width: 140px;
+  max-width: none;
+  max-height: none;
+  height: auto;
   object-position: left center;
 }
 
@@ -778,8 +778,7 @@ footer {
   }
 
   .brand-logo {
-    max-width: 108px;
-    max-height: 50px;
+    width: 128px;
   }
 }
 
@@ -792,8 +791,7 @@ footer {
   }
 
   .brand-logo {
-    max-width: 102px;
-    max-height: 46px;
+    width: 122px;
   }
 
   .main-nav {
@@ -815,9 +813,7 @@ footer {
   }
 
   .brand-logo {
-    width: auto;
-    max-width: 92px;
-    max-height: 42px;
+    width: 115px;
   }
 
   .main-nav {
@@ -833,8 +829,7 @@ footer {
 /* Móviles muy pequeños */
 @media (max-width: 380px) {
   .brand-logo {
-    max-width: 84px;
-    max-height: 38px;
+    width: 105px;
   }
 
   .site-header {
